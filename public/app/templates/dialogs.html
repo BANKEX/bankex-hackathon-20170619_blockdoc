@@ -1,0 +1,67 @@
+<!-- Set Internal number -->
+<div class="modal fade" id="setnumber" tabindex="-1" role="dialog" aria-labelledby="setnumber" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">Установка номера отслеживания</h4>
+      </div>
+      <div class="modal-body">
+          <div class="form-group">
+            <label for="internal_number">Internal number</label>
+            <input type="text" class="form-control" id="internal_number" placeholder="Set internal phone number" ng-model="internalnumber">
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="setInternalNumber()">OK</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Incoming call -->
+<div class="modal fade" id="incomingcall" tabindex="-1" role="dialog" aria-labelledby="incomingcall" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">Входящий звонок</h4>
+      </div>
+      <div class="modal-body">
+          <div class="form-group">
+            <span>Исходящий номер: <em>{{ call.ani }}</em></span><br />
+            <span>Организация: {{ call.shortName }}</span><br />
+            <span>Идентификатор звонка: {{ call.calluuid }}</span>
+          </div>
+          <!--
+          <div class="form-group" ng-if="call.calluuid">
+            <pre>{{ call | json }}</pre>
+          </div>
+          -->
+          <div class="form-group">
+            <p>Для создания дескриптора, дождитесь разблокировки кнопки и нажмите "Создать дескриптор"</p>
+            <label for="personid">Идентификатор РЕБ</label>            
+            <input type="text" class="form-control" id="personid" placeholder="Идентификатор клиента в РЕБ" ng-model="call.person_id"><br />
+            
+            <label for="speechername">ФИО звонящего</label>            
+            <input type="text" class="form-control" id="speechername" placeholder="ФИО звонящего" ng-model="call.speecher_name"><br />
+
+            <label for="speecherole">Должность звонящего</label>            
+            <input type="text" class="form-control" id="speecherole" placeholder="ФИО звонящего" ng-model="call.speecher_role"><br />
+            <p ng-if="call.message"><span>Информация: {{ call.message }}</span></p>
+            <p ng-if="call.error"><span>Ошибка: {{ call.error }}</span></p>
+            <p>
+             <button type="button" id="save_completed" class="btn btn-primary" ng-click="SaveCompletedModel()" ng-class="call.status =='model' ? '': 'disabled'"><i class="fa fa-cog fa-spin fa-fw" ng-if="call.status != 'model'"></i>&nbsp;Ожидание записи</button>
+            </p> 
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+      </div>
+    </div>
+  </div>
+</div>

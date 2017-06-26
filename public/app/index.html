@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>BlockDoc</title>
+		<meta name="description" content="description">
+		<meta name="author" content="Anatoliy A Aksenov">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" />
+		<link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+		<link href='//fonts.googleapis.com/css?family=Righteous' rel='stylesheet' type='text/css' />
+		<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" rel="stylesheet" />
+		<link href="//cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/3.1.3/css/jasny-bootstrap.css" rel="stylesheet" />
+
+		<link rel="stylesheet" href="/css/main.css" type='text/css' />
+		<link rel="stylesheet" href="/css/css-loader.css" type="text/css">
+    
+		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!--[if lt IE 9]>
+				<script src="http://getbootstrap.com/docs-assets/js/html5shiv.js"></script>
+				<script src="http://getbootstrap.com/docs-assets/js/respond.min.js"></script>
+		<![endif]-->
+		
+	</head>
+<body  ng-app="App" ng-controller="MainController" ng-init="init()">
+
+<header class="navbar">
+	<div class="container-fluid expanded-panel">
+		<div class="row display-table">
+			<div id="logo" class="col-xs-12 col-md-10 col-lg-10 display-cell">
+				<a href="/">BlockDoc</a>
+			</div>
+		</div>
+	</div>
+</header>
+<!--End Header-->
+<div class="clearfix"></div>
+<!--Start Container-->
+<div id="main" class="container-fluid">
+	<div class="row">
+		<div id="sidebar-left" class="col-xs-2 col-sm-2">
+			<ul class="nav main-menu">
+				<li>
+					<a href="#" ng-click="showCreate()">
+						<i class="fa fa-file-text-o"></i>
+						<span class="hidden-xs">Создать</span>
+					</a>
+				</li>
+				<li>
+					<a href="#" ng-click="showAccept()">
+						<i class="fa fa-lock"></i>
+						<span class="hidden-xs">Подписать</span>
+					</a>
+				</li>				
+				<li>
+					<a href="#" ng-click="showCheck()">
+						<i class="fa fa-list"></i>
+						<span class="hidden-xs">Проверить</span>
+					</a>
+				</li>
+			</ul>
+		</div>
+		<!--Start Content-->
+		<div id="content" class="col-xs-10 col-sm-10" >
+			<div class="alert-container"></div>
+			<div ng-switch="page">
+				<create ng-switch-when="create"></create>
+				<accept ng-switch-when="accept"></accept>
+				<check ng-switch-when="check"></check>				
+				
+				<div ng-switch-default >
+					<i class="fa fa-cog fa-spin fa-3x fa-fw" style="position: absolute; left:50%; top: 300px;"></i>
+					<span class="sr-only">Loading...</span>
+				</div>
+			
+			</div>
+			
+		</div>
+		<!--End Content-->
+	</div>
+</div>
+
+<!--snipper-->
+<div id="loadingScreen" class="loader loader-default" data-text="Loading"></div>
+<script>
+    function startLoading() {
+		$('#loadingScreen').addClass('is-active');
+	}
+	function stopLoading() {
+        $('#loadingScreen').removeClass('is-active');
+	}
+</script>
+
+<dialogs></dialogs>
+<!--End Container-->
+<script src="/socket.io/socket.io.js"></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.8/angular.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/3.1.3/js/jasny-bootstrap.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/core.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/md5.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/sha256.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/enc-base64.js"></script>
+
+<script src="/js/app.js"></script>
+<script src="/js/dataAssistant.js"></script>
+<script src="/js/socket.js"></script>
+<script src="/js/lodash.js"></script>
+<script src="/js/MainController.js"></script>
+<script src="/js/create.js"></script>
+<script src="/js/accept.js"></script>
+<script src="/js/check.js"></script>
+<a href="https://icons8.com">Icon pack by Icons8</a>
+
+</body>
+</html>

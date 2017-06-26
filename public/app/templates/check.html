@@ -1,0 +1,28 @@
+<div ng-init="init()">
+    <h4>Проверить</h4>
+    <form>
+
+        <!--File-->
+        <div class="form-group col-sm-6" style="padding-left: 0">
+            <label for="check_file">Документ</label>
+            <input type="file" id="check_file">
+            <p class="help-block">Проверить</p>
+        </div>
+
+        <!--Submit-->
+        <div class="form-group">
+
+            <div class="col-sm-12" style="padding-left: 0">
+                <button type="submit" class="btn btn-primary" ng-click="check()">Проверить</button>
+            </div>
+        </div>
+    </form>
+    <div>
+        <div style="margin-top: 10px" class="alert alert-success" ng-show="signed && checked">
+            Успешно подписано обеими сторонами
+        </div>
+        <div style="margin-top: 10px" class="alert alert-danger" ng-show="!signed && checked">
+            Ожидается подпись с другой стороны
+        </div>
+    </div>
+</div>

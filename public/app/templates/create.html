@@ -1,0 +1,48 @@
+<div ng-init="init()">
+    <h4>Создать</h4>
+    <p></p>
+    <form >
+
+        <!--File-->
+        <div class="form-group col-sm-6" style="padding-left: 0">
+            <label for="exampleInputFile">Документ на подпись</label>
+            <input type="file" id="exampleInputFile">
+            <p class="help-block">Инициализировать документ на подпись</p>
+        </div>
+
+        <!--Eth Address-->
+        <div id="ethAddressFormGroup" class="form-group col-sm-6 has-feedback"
+             ng-class="ethAddrrIsValid ? 'has-success' : 'has-error'" style="padding-left: 0">
+            <label class="control-label"  for="ethAddress">Ethereum адрес второй стороны</label>
+
+            <div class="input-group">
+                <span class="input-group-addon">
+                    <img class="icon icons8-Ethereum" width="20" height="20"
+                    src="data:image/png;base64,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">
+                </span>
+                <input type="text" class="form-control"
+                       ng-model="ethAddrr"
+                       ng-change="onAddressUpdate()"
+                       id="ethAddress" placeholder="0x000000" aria-describedby="inputGroupSuccess1Status">
+                        <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"
+                          ng-show="ethAddrrIsValid"></span>
+                        <span class="glyphicon glyphicon-ban-circle form-control-feedback" aria-hidden="true"
+                          ng-hide="ethAddrrIsValid && ethAddrrIsConfirmed"></span>
+                        <i class="fa fa-cog fa-spin fa-1x fa-fw form-control-feedback" style="color:#777" aria-hidden="true"
+                          ng-show="ethAddrrIsValid && !ethAddrrIsConfirmed"></i>
+                        <!--<span id="inputGroupSuccess1Status" class="sr-only">(success)</span>-->
+            </div>
+            <div style="margin-top: 10px" class="alert alert-success" ng-show="ethAddrrIsValid && ethAddrrIsConfirmed">
+                <strong>The party joined</strong> the Agreement on Acceptance of Addresses
+            </div>
+        </div>
+
+        <!--Submit-->
+        <div class="form-group">
+
+            <div class="col-sm-12" style="padding-left: 0">
+                <button type="submit" class="btn btn-primary" ng-click="create()">Отправить</button>
+            </div>
+        </div>
+    </form>
+</div>
